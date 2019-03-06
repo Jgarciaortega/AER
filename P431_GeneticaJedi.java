@@ -1,4 +1,4 @@
-package Resueltos;
+package AER;
 import java.util.Scanner;
 
 /* En este problema tenemos que calcular la cantidad de midiclorianos de cada hijo de las familias dadas. Para ello el primer dato de entrada será

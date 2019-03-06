@@ -1,6 +1,6 @@
-package Resueltos;
+package AER;
 
-public class HolaMundo {
+public class P116_HolaMundo {
 
 	public static void main(String[] args) {
 	

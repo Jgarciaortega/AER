@@ -1,4 +1,4 @@
-package Resueltos;
+package AER;
 import java.util.Scanner;
 
 public class P149_SanFermines {
