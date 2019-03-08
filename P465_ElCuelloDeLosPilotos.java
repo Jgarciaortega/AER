@@ -11,15 +11,14 @@ public class P465_ElCuelloDeLosPilotos {
 				{'#' , '#' , '#'},
 		};
 
-		curvas = localizar(circuito, 0 , 0);
+		curvas = localizar(circuito, 0 , 0 , curvas);
 		System.out.println(curvas);
 	}
 
-	public static int localizar(char [][] circuito, int i , int j) {
+	public static int localizar(char [][] circuito, int i , int j,int curvas) {
 
 		int filas = circuito.length -1;
 		int columnas = circuito[0].length -1;
-		int curvas = 0;
 		String direccion;
 
 		if(circuito[i][j] == 'O') {
@@ -28,19 +27,19 @@ public class P465_ElCuelloDeLosPilotos {
 
 				i++;
 				direccion = "i";
-				curvas = recorrer(circuito, i, j, direccion);
+				curvas = recorrer(circuito, i, j, direccion, curvas,true , true);
 
 			}else if (j != columnas && circuito[i][j+1] == '#') {
 
 				j++;
 				direccion = "j";
-				curvas = recorrer(circuito, i, j, direccion);
+				curvas = recorrer(circuito, i, j, direccion , curvas, true, true);
 
 			}else if (j != 0 && circuito[i][j-1] == '#') {
 
 				j--;
 				direccion = "j";
-				curvas = recorrer(circuito, i, j, direccion);
+				curvas = recorrer(circuito, i, j, direccion , curvas, true, true);
 			}
 
 		}else {
@@ -58,20 +57,20 @@ public class P465_ElCuelloDeLosPilotos {
 				}
 			}
 
-			localizar(circuito, i , j);
+			localizar(circuito, i , j , curvas);
 		}
 
 		return curvas;
 	}
 
 
-	public static int recorrer(char[][] circuito,int i,int j, String direccion) {
+	public static int recorrer(char[][] circuito,int i,int j, String direccion , int curvas, boolean RetrocedeI, boolean RetrocedeJ) {
 
-		int curvas = 0;
+	
 		int filas = circuito.length -1;
 		int columnas = circuito[0].length -1;
 		boolean fin = false;
-
+		
 
 		if(circuito[i][j] == 'O') {
 
@@ -83,13 +82,21 @@ public class P465_ElCuelloDeLosPilotos {
 			if(i != filas && circuito[i+1][j] == '#') {
 
 				i++;
-				recorrer(circuito, i , j, direccion);
+				RetrocedeI = false;
+				recorrer(circuito, i , j, direccion, curvas, RetrocedeI, RetrocedeJ);
+				
+			/*}else if (i != 0 && circuito[i-1][j] == '#' && RetrocedeI && !fin) {
+				
+				i--;
+				RetrocedeI = false;
+				recorrer(circuito, i , j, direccion , curvas, RetrocedeI, RetrocedeJ);*/
 
 			}else {
 
 				direccion = "j";
 				curvas++;
-				recorrer(circuito, i , j, direccion);
+				RetrocedeI = true;
+				recorrer(circuito, i , j, direccion , curvas,RetrocedeI, RetrocedeJ);
 				
 			}
 
@@ -98,14 +105,21 @@ public class P465_ElCuelloDeLosPilotos {
 			if(j != columnas && circuito[i][j+1] == '#') {
 
 				j++;
-				recorrer(circuito, i , j, direccion);
-
+				RetrocedeJ = false;
+				recorrer(circuito, i , j, direccion, curvas, RetrocedeI, RetrocedeJ);
+/*
+			}else if (j != 0 && circuito[i][j-1] == '#' && RetrocedeJ && !fin) {
+				
+				j--;
+				RetrocedeJ = false;
+				recorrer(circuito, i , j, direccion , curvas, RetrocedeI, RetrocedeJ);*/
 
 			}else {
 
 				direccion = "i";
 				curvas++;
-				recorrer(circuito, i , j, direccion);
+				RetrocedeJ = true;
+				recorrer(circuito, i , j, direccion, curvas,RetrocedeI, RetrocedeJ);
 				
 			}
 
