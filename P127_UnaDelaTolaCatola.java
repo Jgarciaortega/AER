@@ -1,3 +1,4 @@
+package AER;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,10 +19,9 @@ public class P127_UnaDelaTolaCatola {
 
 		casos = sc.nextInt();
 
-		while(casos > 0) {
+		for(int i = 0; i < casos; i++) {
 
 			lista = new ArrayList<String>();
-			cont = 0;
 			fin = false;
 			res = "";
 			posI = 0;
@@ -44,8 +44,7 @@ public class P127_UnaDelaTolaCatola {
 			camas = sc.nextInt();
 			palabrasCancion = sc.nextInt();
 
-
-			if (camas == lista.size()) {
+			if (camas >= lista.size()) {
 
 				res = "TODOS TIENEN CAMA";
 				fin = true;
@@ -59,64 +58,32 @@ public class P127_UnaDelaTolaCatola {
 
 			}
 
-
 			while(camas != lista.size() && !fin) {
 
-					
 				posI = posI + palabrasCancion-1;
 				posI = posI%lista.size();
 				lista.remove(posI);
 
-//				for(int i = posI; i <= lista.size(); i++) {
-//
-//					if(cont == palabrasCancion) {
-//
-//						lista.remove(i-1); 
-//						cont = 0;
-//						posI = i-1;
-//						
-//						if(i == lista.size()) {
-//							
-//							posI = 0;
-//							break;
-//							
-//						}else {
-//							
-//							posI = i-1;
-//							break;
-//						}
-//						
-//						
-//					}
-//
-//					if(i == lista.size()) {
-//
-//						posI = 0;
-//
-//					}
-//
-//					cont++;
-//
-//				}
 			}
+			if(camas == lista.size() && !fin) {
 
-			
-			
-			if(camas == lista.size()) {
+				for(int j = 0; j < lista.size(); j++) {
 
-				for(String i: lista) {
+					if (j != lista.size()-1) {
 
-					System.out.print(i);
+						System.out.print(lista.get(j) + " ");
+
+					}else {
+
+						System.out.println(lista.get(j));
+					}
+
 				}
 
 			}else {
 
 				System.out.println(res);
 			}
-
 		}
-
-
 	}
-
 }
