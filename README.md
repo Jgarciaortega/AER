@@ -2,4 +2,4 @@
 Acepta el reto
 
 
-Estoy modificando este archivo a modo de prueba
+Soluciones problemas de https://www.aceptaelreto.com/
